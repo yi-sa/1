@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATRIX DE COLOMBIA & INSTRUNET S.A.S.</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0; padding: 0;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        header {
+            background-color: #ffeb3b;
+            padding: 40px 20px;
+        }
+        .logo { max-width: 320px; margin-bottom: 20px; }
+        .empresa { font-size: 1.8em; font-weight: bold; margin: 10px 0; }
+        .nit { font-size: 1.2em; margin-bottom: 20px; }
+        .contactos { margin: 20px 0; font-size: 1.5em; font-weight: bold; }
+        .contactos a { color: #000; text-decoration: none; margin: 0 20px; display: inline-block; }
+        .contactos img { width: 45px; vertical-align: middle; margin-right: 8px; }
+
+        /* MAPA */
+        .mapa { padding: 40px 20px; background-color: #fff; }
+        .mapa iframe {
+            width: 100%; height: 450px; border: 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* QR */
+        .qr { padding: 30px; background-color: #f9f9f9; }
+        .qr img {
+            width: 220px; height: 220px;
+            border: 8px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* FORMULARIO */
+        .form-section { padding: 50px 20px; background-color: #ffeb3b; }
+        .form-section h2 { font-size: 2em; margin-bottom: 20px; }
+        form { max-width: 600px; margin: 0 auto; text-align: left; }
+        label { display: block; margin: 15px 0 5px; font-weight: bold; }
+        input, textarea {
+            width: 100%; padding: 12px;
+            border: 1px solid #ccc; border-radius: 8px;
+            font-size: 1em; box-sizing: border-box;
+        }
+        button {
+            margin-top: 30px; padding: 18px 40px;
+            font-size: 1.6em; font-weight: bold;
+            color: white; background-color: #28a745;
+            border: none; border-radius: 50px; cursor: pointer;
+            box-shadow: 0 8px 20px rgba(40,167,69,0.3);
+            transition: all .3s;
+        }
+        button:hover { background-color: #218838; transform: scale(1.05); }
+
+        footer {
+            background-color: #333; color: white;
+            padding: 25px; font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .contactos a { display: block; margin: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <header>
+        <img src="ys1.png" alt="logo Yire SAMA" class="logo">
+        <div class="empresa">MATRIX DE COLOMBIA & INSTRUNET S.A.S.</div>
+        <div class="nit">NIT 900199738-6</div>
+        <div class="contactos">
+            <a href="tel:+573127428547">
+                <img src="https://img.icons8.com/color/48/phone.png" alt="Teléfono"> 312 742 8547
+            </a>
+            <a href="https://wa.me/573003468551">
+                <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp"> 300 346 8551
+            </a>
+            <a href="https://wa.me/573226649150">
+                <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp"> 322 664 9150
+            </a>
+        </div>
+    </header>
+
+    <!-- MAPA -->
+    <div class="mapa">
+        <h2>Nuestra Ubicación</h2>
+        <p><strong>Calle 45 # 57A-16, Piso 3<br>Medellín, Antioquia, Colombia</strong></p>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.244509873197!2d-75.579481925968!3d6.248407993749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f3b7e4b5b7%3A0x8f1a3c8d4e5f6a7b!2sCalle%2045%20%2357A-16%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1700000000000"
+            allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+
+    <!-- QR -->
+    <div class="qr">
+        <h2>Escanea nuestro QR para más información</h2>
+        <a href="https://yi-sa.github.io/1/" target="_blank">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://yi-sa.github.io/1/" alt="QR Código">
+        </a>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="form-section">
+        <h2>¡Agenda tu Asesoría Gratuita!</h2>
+        <form action="https://formspree.io/f/xpzgwjwd" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre aquí">
+
+            <label for="telefono">Número de celular:</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 300 123 4567">
+
+            <label for="mensaje">Mensaje (opcional):</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
+
+            <button type="submit">ENVIAR Y AGENDAR ASESORÍA</button>
+        </form>
+        <p style="margin-top: 20px; font-size: 0.9em;">
+            Te contactaremos lo más pronto posible.<br>
+            Email: <strong>matrixdecolombia@gmail.com</strong>
+        </p>
+    </div>
+
+    <footer>
+        MATRIX DE COLOMBIA & INSTRUNET S.A.S.<br>
+        NIT 900199738-6<br>
+        Calle 45 # 57A-16 Piso 3 • Medellín, Colombia<br>
+        © 2026 Todos los derechos reservados
+    </footer>
+
+</div>
+</body>
+</html>
