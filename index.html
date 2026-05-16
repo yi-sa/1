@@ -1,148 +1,907 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MATRIX DE COLOMBIA & INSTRUNET S.A.S.</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f9f9f9;
-            margin: 0; padding: 0;
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        header {
-            background-color: #ffeb3b;
-            padding: 40px 20px;
-        }
-        .logo { max-width: 320px; margin-bottom: 20px; }
-        .empresa { font-size: 1.8em; font-weight: bold; margin: 10px 0; }
-        .nit { font-size: 1.2em; margin-bottom: 20px; }
-        .contactos { margin: 20px 0; font-size: 1.5em; font-weight: bold; }
-        .contactos a { color: #000; text-decoration: none; margin: 0 20px; display: inline-block; }
-        .contactos img { width: 45px; vertical-align: middle; margin-right: 8px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yire SAMA — Medellín</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --chocolate: #2C1A0E;
+    --espresso: #1A0F07;
+    --caramel: #7A4A1E;
+    --gold: #C9A96E;
+    --gold-light: #E8D5A3;
+    --cream: #F5EDD8;
+    --cream-dark: #EAD9B8;
+    --warm-white: #FAF6EE;
+    --text-dark: #1A0F07;
+    --text-mid: #5C3D1E;
+    --text-light: #9E7A4A;
+  }
 
-        /* MAPA */
-        .mapa { padding: 40px 20px; background-color: #fff; }
-        .mapa iframe {
-            width: 100%; height: 450px; border: 0;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* QR */
-        .qr { padding: 30px; background-color: #f9f9f9; }
-        .qr img {
-            width: 220px; height: 220px;
-            border: 8px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
+  html { scroll-behavior: smooth; }
 
-        /* FORMULARIO */
-        .form-section { padding: 50px 20px; background-color: #ffeb3b; }
-        .form-section h2 { font-size: 2em; margin-bottom: 20px; }
-        form { max-width: 600px; margin: 0 auto; text-align: left; }
-        label { display: block; margin: 15px 0 5px; font-weight: bold; }
-        input, textarea {
-            width: 100%; padding: 12px;
-            border: 1px solid #ccc; border-radius: 8px;
-            font-size: 1em; box-sizing: border-box;
-        }
-        button {
-            margin-top: 30px; padding: 18px 40px;
-            font-size: 1.6em; font-weight: bold;
-            color: white; background-color: #28a745;
-            border: none; border-radius: 50px; cursor: pointer;
-            box-shadow: 0 8px 20px rgba(40,167,69,0.3);
-            transition: all .3s;
-        }
-        button:hover { background-color: #218838; transform: scale(1.05); }
+  body {
+    background-color: var(--warm-white);
+    color: var(--text-dark);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: default;
+  }
 
-        footer {
-            background-color: #333; color: white;
-            padding: 25px; font-size: 0.9em;
-        }
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--espresso);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
 
-        @media (max-width: 768px) {
-            .contactos a { display: block; margin: 15px 0; }
-        }
-    </style>
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 60px,
+        rgba(201,169,110,0.03) 60px,
+        rgba(201,169,110,0.03) 61px
+      );
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 8vw, 110px);
+    font-weight: 300;
+    line-height: 0.9;
+    color: var(--cream);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-brand em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-brand .block-sama {
+    display: block;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--cream);
+    font-size: clamp(40px, 5vw, 70px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-light);
+    margin-top: 28px;
+    margin-bottom: 48px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+  }
+
+  .hero-contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.85s forwards;
+  }
+
+  .hero-contact-list li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--cream-dark);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    transition: color 0.3s;
+  }
+
+  .hero-contact-list li a:hover { color: var(--gold); }
+
+  .hero-contact-list .icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(201,169,110,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .hero-contact-list li a:hover .icon {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.12);
+  }
+
+  .hero-contact-list .icon svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--gold);
+  }
+
+  /* ── HERO RIGHT ── */
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    bottom: 10%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  .marquilla-frame {
+    position: relative;
+    opacity: 0;
+    animation: fadeScale 1s 0.5s forwards;
+  }
+
+  .marquilla-frame img {
+    width: clamp(260px, 30vw, 400px);
+    border-radius: 4px;
+    display: block;
+    filter: drop-shadow(0 40px 60px rgba(0,0,0,0.7));
+  }
+
+  .marquilla-frame::before {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
+  .marquilla-frame::after {
+    content: 'MARQUILLA OFICIAL';
+    position: absolute;
+    bottom: -36px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--text-light);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--gold);
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .strip-inner {
+    display: inline-flex;
+    animation: scroll-x 20s linear infinite;
+  }
+
+  .strip-inner span {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--espresso);
+    font-weight: 600;
+    padding: 0 40px;
+  }
+
+  .strip-inner .dot {
+    color: var(--chocolate);
+    padding: 0;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 60vh;
+  }
+
+  .about-left {
+    padding: 100px 60px 100px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--espresso);
+    margin-bottom: 28px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--caramel);
+  }
+
+  .about-text {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text-mid);
+    max-width: 420px;
+    margin-bottom: 40px;
+  }
+
+  .nit-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--gold);
+    padding: 12px 20px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--caramel);
+    font-weight: 500;
+  }
+
+  .about-right {
+    background: var(--chocolate);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 60px;
+  }
+
+  .about-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(201,169,110,0.04) 40px,
+      rgba(201,169,110,0.04) 41px
+    );
+  }
+
+  .info-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .info-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.15);
+    padding: 28px 24px;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .info-card:hover {
+    background: rgba(201,169,110,0.08);
+    border-color: rgba(201,169,110,0.4);
+  }
+
+  .info-card .ic-label {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .info-card .ic-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--cream);
+    font-weight: 300;
+    line-height: 1.3;
+  }
+
+  /* ── LOCATION ── */
+  .location {
+    background: var(--warm-white);
+    padding: 100px 80px;
+  }
+
+  .location-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .map-container {
+    border: 1px solid var(--cream-dark);
+    overflow: hidden;
+    border-radius: 2px;
+    max-width: 900px;
+    margin: 0 auto 48px;
+    position: relative;
+  }
+
+  .map-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 6px solid var(--warm-white);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 380px;
+    display: block;
+    border: none;
+    filter: sepia(40%) saturate(0.7) contrast(1.05);
+  }
+
+  .address-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--chocolate);
+    color: var(--cream);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .address-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .address-icon svg { width: 20px; height: 20px; fill: var(--gold); }
+
+  .address-text {
+    font-size: 14px;
+    color: var(--cream-dark);
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+  }
+
+  .address-text strong {
+    display: block;
+    font-size: 16px;
+    color: var(--cream);
+    font-weight: 500;
+    margin-bottom: 4px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── CONTACT FORM ── */
+  .contact-section {
+    background: var(--espresso);
+    padding: 100px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,169,110,0.06), transparent 70%);
+  }
+
+  .contact-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .contact-inner .section-label { color: var(--gold); }
+  .contact-inner .section-title { color: var(--cream); }
+
+  .contact-inner .section-title em { color: var(--gold-light); }
+
+  .contact-subtitle {
+    font-size: 14px;
+    color: rgba(232,213,163,0.6);
+    margin-bottom: 52px;
+    line-height: 1.8;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.2);
+    color: var(--cream);
+    padding: 14px 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+    resize: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(232,213,163,0.25);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.05);
+  }
+
+  .btn-submit {
+    width: 100%;
+    margin-top: 8px;
+    padding: 18px 40px;
+    background: var(--gold);
+    color: var(--espresso);
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.15s;
+  }
+
+  .btn-submit:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-submit:active { transform: translateY(0); }
+
+  .form-note {
+    margin-top: 20px;
+    font-size: 11px;
+    color: rgba(232,213,163,0.35);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── QR SECTION ── */
+  .qr-section {
+    background: var(--cream-dark);
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+  }
+
+  .qr-text .section-label { color: var(--caramel); }
+  .qr-text .section-title { color: var(--espresso); }
+  .qr-text .section-title em { color: var(--caramel); }
+
+  .qr-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-top: 16px;
+    max-width: 320px;
+  }
+
+  .qr-image-wrap {
+    flex-shrink: 0;
+    background: white;
+    padding: 16px;
+    border: 1px solid var(--gold);
+    position: relative;
+  }
+
+  .qr-image-wrap img {
+    width: 160px;
+    height: 160px;
+    display: block;
+    image-rendering: pixelated;
+  }
+
+  .qr-image-wrap::before {
+    content: 'ESCANEAR';
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+    letter-spacing: 0.4em;
+    color: var(--caramel);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--chocolate);
+    padding: 48px 80px 32px;
+    border-top: 1px solid rgba(201,169,110,0.15);
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--cream);
+    font-weight: 300;
+  }
+
+  .footer-brand em { color: var(--gold); font-style: italic; }
+  .footer-brand span {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  .footer-email a {
+    color: var(--gold-light);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    transition: color 0.3s;
+  }
+
+  .footer-email a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    font-size: 10px;
+    color: rgba(232,213,163,0.25);
+    letter-spacing: 0.12em;
+    text-align: center;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeScale {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .about { grid-template-columns: 1fr; }
+    .hero-left { padding: 80px 32px 60px; }
+    .hero-right { padding: 40px 32px 80px; min-height: 50vh; }
+    .hero-right::before { display: none; }
+    .about-left { padding: 60px 32px; }
+    .about-right { padding: 60px 32px; min-height: 320px; }
+    .location, .contact-section, footer { padding: 60px 32px; }
+    .qr-section { flex-direction: column; gap: 48px; padding: 60px 32px; }
+    .footer-top { flex-direction: column; gap: 24px; }
+  }
+</style>
 </head>
 <body>
-<div class="container">
 
-    <!-- HEADER -->
-    <header>
-        <img src="ys1.png" alt="logo Yire SAMA" class="logo">
-        <div class="empresa">MATRIX DE COLOMBIA & INSTRUNET S.A.S.</div>
-        <div class="nit">NIT 900199738-6</div>
-        <div class="contactos">
-            <a href="tel:+573127428547">
-                <img src="https://img.icons8.com/color/48/phone.png" alt="Teléfono"> 312 742 8547
-            </a>
-            <a href="https://wa.me/573003468551">
-                <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp"> 300 346 8551
-            </a>
-            <a href="https://wa.me/573226649150">
-                <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp"> 322 664 9150
-            </a>
-        </div>
-    </header>
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Medellín · Colombia · Desde 2018</p>
 
-    <!-- MAPA -->
-    <div class="mapa">
-        <h2>Nuestra Ubicación</h2>
-        <p><strong>Calle 45 # 57A-16, Piso 3<br>Medellín, Antioquia, Colombia</strong></p>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.244509873197!2d-75.579481925968!3d6.248407993749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f3b7e4b5b7%3A0x8f1a3c8d4e5f6a7b!2sCalle%2045%20%2357A-16%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1700000000000"
-            allowfullscreen="" loading="lazy">
-        </iframe>
-    </div>
+    <h1 class="hero-brand">
+      <em>Yire</em>
+      <span class="block-sama">SAMA</span>
+    </h1>
 
-    <!-- QR -->
-    <div class="qr">
-        <h2>Escanea nuestro QR para más información</h2>
-        <a href="https://yi-sa.github.io/1/" target="_blank">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://yi-sa.github.io/1/" alt="QR Código">
+    <p class="hero-tagline">Moda hecha con identidad.<br>Fabricado con orgullo en Colombia.</p>
+
+    <div class="hero-line"></div>
+
+    <ul class="hero-contact-list">
+      <li>
+        <a href="tel:+573127428547">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          </span>
+          312 742 8547
         </a>
+      </li>
+      <li>
+        <a href="https://wa.me/573003468551" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M17.5 14.4l-2.1-.6c-.3-.1-.6 0-.8.2l-.9 1.1c-1.5-.7-2.7-1.9-3.4-3.4l1.1-.9c.2-.2.3-.5.2-.8l-.6-2.1c-.1-.5-.6-.9-1.1-.9H8.3c-.6 0-1.1.5-1 1.1.3 2.3 1.4 4.5 3 6.1s3.8 2.7 6.1 3c.6.1 1.1-.4 1.1-1v-1.8c0-.5-.4-1-.9-1.1zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.7-1.5C8.3 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          </span>
+          WhatsApp 300 346 8551
+        </a>
+      </li>
+      <li>
+        <a href="https://wa.me/573226649150" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M17.5 14.4l-2.1-.6c-.3-.1-.6 0-.8.2l-.9 1.1c-1.5-.7-2.7-1.9-3.4-3.4l1.1-.9c.2-.2.3-.5.2-.8l-.6-2.1c-.1-.5-.6-.9-1.1-.9H8.3c-.6 0-1.1.5-1 1.1.3 2.3 1.4 4.5 3 6.1s3.8 2.7 6.1 3c.6.1 1.1-.4 1.1-1v-1.8c0-.5-.4-1-.9-1.1zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.7-1.5C8.3 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          </span>
+          WhatsApp 322 664 9150
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="hero-right">
+    <div class="marquilla-frame">
+      <img src="ys2.png" alt="Marquillas oficiales Yire SAMA — Talla L y Talla M">
     </div>
+  </div>
+</section>
 
-    <!-- FORMULARIO -->
-    <div class="form-section">
-        <h2>¡Agenda tu Asesoría Gratuita!</h2>
-        <form action="https://formspree.io/f/xpzgwjwd" method="POST">
-            <label for="nombre">Nombre completo:</label>
-            <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre aquí">
-
-            <label for="telefono">Número de celular:</label>
-            <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 300 123 4567">
-
-            <label for="mensaje">Mensaje (opcional):</label>
-            <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
-
-            <button type="submit">ENVIAR Y AGENDAR ASESORÍA</button>
-        </form>
-        <p style="margin-top: 20px; font-size: 0.9em;">
-            Te contactaremos lo más pronto posible.<br>
-            Email: <strong>matrixdecolombia@gmail.com</strong>
-        </p>
-    </div>
-
-    <footer>
-        MATRIX DE COLOMBIA & INSTRUNET S.A.S.<br>
-        NIT 900199738-6<br>
-        Calle 45 # 57A-16 Piso 3 • Medellín, Colombia<br>
-        © 2026 Todos los derechos reservados
-    </footer>
-
+<!-- ═══════════ TICKER STRIP ═══════════ -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-inner">
+    <span>Yire SAMA</span><span class="dot">◆</span>
+    <span>Made in Medellín</span><span class="dot">◆</span>
+    <span>Fabricado en Colombia</span><span class="dot">◆</span>
+    <span>Moda con Identidad</span><span class="dot">◆</span>
+    <span>Matrix de Colombia</span><span class="dot">◆</span>
+    <span>NIT 900199738-6</span><span class="dot">◆</span>
+    <span>Yire SAMA</span><span class="dot">◆</span>
+    <span>Made in Medellín</span><span class="dot">◆</span>
+    <span>Fabricado en Colombia</span><span class="dot">◆</span>
+    <span>Moda con Identidad</span><span class="dot">◆</span>
+    <span>Matrix de Colombia</span><span class="dot">◆</span>
+    <span>NIT 900199738-6</span><span class="dot">◆</span>
+  </div>
 </div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="about">
+  <div class="about-left">
+    <p class="section-label">Sobre Nosotros</p>
+    <h2 class="section-title">Moda hecha<br>con <em>alma</em></h2>
+    <p class="about-text">
+      Somos una empresa colombiana dedicada al diseño y producción de prendas de vestir con identidad propia. Cada prenda lleva nuestra marquilla bordada a mano, símbolo de calidad y autenticidad.
+    </p>
+    <p class="about-text">
+      Creemos que la moda es una forma de expresión cultural. Por eso cada detalle — desde el tejido hasta la etiqueta — está pensado con intención y orgullo colombiano.
+    </p>
+    <div class="nit-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      MATRIX DE COLOMBIA &amp; INSTRUNET S.A.S. — NIT 900199738-6
+    </div>
+  </div>
+
+  <div class="about-right">
+    <div class="info-grid">
+      <div class="info-card">
+        <p class="ic-label">Ciudad</p>
+        <p class="ic-value">Medellín,<br>Colombia</p>
+      </div>
+      <div class="info-card">
+        <p class="ic-label">Origen</p>
+        <p class="ic-value">100%<br>Colombiano</p>
+      </div>
+      <div class="info-card">
+        <p class="ic-label">Tallas</p>
+        <p class="ic-value">S · M · L</p>
+      </div>
+      <div class="info-card">
+        <p class="ic-label">Identidad</p>
+        <p class="ic-value">Moda<br>Artesanal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LOCATION ═══════════ -->
+<section class="location">
+  <div class="location-header">
+    <p class="section-label">Nuestra Ubicación</p>
+    <h2 class="section-title">Visítanos en<br><em>Medellín</em></h2>
+  </div>
+
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.244509873197!2d-75.579481925968!3d6.248407993749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f3b7e4b5b7%3A0x8f1a3c8d4e5f6a7b!2sCalle%2045%20%2357A-16%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1700000000000"
+      allowfullscreen=""
+      loading="lazy"
+      title="Ubicación Yire SAMA"
+    ></iframe>
+  </div>
+
+  <div class="address-card">
+    <div class="address-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    </div>
+    <div class="address-text">
+      <strong>Calle 45 # 57A-16, Piso 3</strong>
+      Medellín, Antioquia, Colombia
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="contact-section">
+  <div class="contact-inner">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Agenda tu<br><em>Asesoría Gratuita</em></h2>
+    <p class="contact-subtitle">Escríbenos y te contactaremos a la brevedad.<br>Estamos aquí para ayudarte.</p>
+
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="celular">Número de celular</label>
+        <input type="tel" id="celular" name="celular" placeholder="+57 300 000 0000" required>
+      </div>
+      <div class="form-group">
+        <label for="mensaje">Mensaje (opcional)</label>
+        <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Enviar y Agendar Asesoría</button>
+    </form>
+
+    <p class="form-note">matrixdecolombia@gmail.com — Te contactaremos pronto.</p>
+  </div>
+</section>
+
+<!-- ═══════════ QR ═══════════ -->
+<section class="qr-section">
+  <div class="qr-text">
+    <p class="section-label">Acceso Rápido</p>
+    <h2 class="section-title">Escanea nuestro<br><em>QR</em></h2>
+    <p class="qr-desc">
+      Accede a toda la información de Yire SAMA directamente desde tu teléfono. Escanea el código y conéctate con nosotros.
+    </p>
+  </div>
+  <div class="qr-image-wrap">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://yi-sa.github.io/1/" alt="QR Yire SAMA">
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <em>Yire</em> SAMA
+      <span>Matrix de Colombia &amp; Instrunet S.A.S.</span>
+    </div>
+    <div class="footer-email">
+      <a href="mailto:matrixdecolombia@gmail.com">matrixdecolombia@gmail.com</a>
+    </div>
+  </div>
+  <p class="footer-bottom">© 2026 Matrix de Colombia &amp; Instrunet S.A.S. — NIT 900199738-6 — Calle 45 # 57A-16 Piso 3, Medellín · Todos los derechos reservados</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  const nombre = document.getElementById('nombre').value;
+  const celular = document.getElementById('celular').value;
+  const mensaje = document.getElementById('mensaje').value;
+  const text = encodeURIComponent(`Hola! Soy ${nombre}. Cel: ${celular}. ${mensaje ? 'Mensaje: ' + mensaje : ''}`);
+  window.open(`https://wa.me/573127428547?text=${text}`, '_blank');
+  btn.textContent = '✓ Mensaje Enviado';
+  btn.style.background = '#7A4A1E';
+  setTimeout(() => { btn.textContent = 'Enviar y Agendar Asesoría'; btn.style.background = ''; }, 3000);
+}
+</script>
+
 </body>
 </html>
